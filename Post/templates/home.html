@@ -1,0 +1,18 @@
+{% extends 'base.html' %}
+
+{% block title %}
+    Blogerr - Home
+{% endblock %}
+
+{% block navbar %}
+    {{ super() }}
+{% endblock %}
+
+{% block main %}
+    <p>Welcome, {{user}}</p>
+    {% for post in posts %}
+        {% for i in range(0,3) %}
+            <p>{{ post[i] }}</p>
+        {% endfor %}
+    {% endfor %}
+{% endblock %}

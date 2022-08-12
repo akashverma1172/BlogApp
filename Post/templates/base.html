@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title%}{% endblock %}</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    {% block navbar %}
+        <div class="navbar-container">
+            <div class="logo-container">
+                <ul class="logo-info">
+                    <li class="logo"></li>
+                    <li class="logo-name">Blogerr</li>
+                </ul>
+            </div>
+            <ul class="nav-links">
+                <li class="link">Home</li>
+                <li class="link">Explore</li>
+                <li class="link">Create Blog</li>
+                <li class="link">Groups</li>
+            </ul>
+
+            {% if user != "Guest" %}
+            <div class="user-container">
+                <ul class="user-info">
+                    <li class="user-logo logo"></li>
+                    <ul class="user-data">
+                        <li class="user-name">{{ user }}</li>
+                        <li class="user-name">@username</li>     
+                    </ul>
+                </ul>
+            </div>
+
+            {% else %}
+            <div class="user-container">
+                <ul class="user-info">
+                    <li class="user-auth">Register</li>
+                    <li class="user-auth">Login</li>
+                </ul>
+            </div>
+            {% endif %}
+        </div>
+    {% endblock %}
+
+    {% block main %}
+        
+    {% endblock %}
+
+</body>
+</html>
