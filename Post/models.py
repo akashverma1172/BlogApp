@@ -2,7 +2,8 @@ from turtle import pos
 from mysql.connector import connect, Error
 from hashlib import sha256
 
-auth = {'host':'localhost', 'database':'socialnetworktest', 'user':'root', 'password':'NG;9bwHA'}
+
+auth = {'host':'192.168.1.102', 'database':'socialnetworktest', 'user':'root', 'password':'NG;9bwHA'}
 
 #Create post using this function
 def CreatePost(blog_header, published_date, publisher_id, content):
@@ -32,17 +33,18 @@ def ViewPost(post_id):
         connection = connect(**auth)
 
         if connection.is_connected():
+            print("Connected to DB successfully")
             sql_query = f"SELECT * FROM post WHERE post_id={post_id}"
             cursor = connection.cursor()
             cursor.execute(sql_query)
             post_data = cursor.fetchall()
-
+            print(post_data)
             post_data = {
-                "id" : post_data[0],
-                "header": post_data[1],
-                "published_date": post_data[2],
-                "publisher_id": post_data[3],
-                "content": post_data[4]
+                "id" : post_data[0][0],
+                "header": post_data[0][1],
+                "published_date": post_data[0][2],
+                "publisher_id": post_data[0][3],
+                "content": post_data[0][4]
             }
 
             return post_data

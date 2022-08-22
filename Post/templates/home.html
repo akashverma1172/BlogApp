@@ -10,9 +10,10 @@
 
 {% block main %}
     <p>Welcome, {{user}}</p>
-    {% for post in posts %}
-        {% for i in range(0,3) %}
-            <p>{{ post[i] }}</p>
+    {% if post %}
+        {% for data in post.values() %}
+            <p>{{ data }}</p>
+            
         {% endfor %}
-    {% endfor %}
+    {% endif %}
 {% endblock %}

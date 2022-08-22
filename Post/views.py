@@ -5,8 +5,12 @@ from .models import ViewPost
 
 @app.route('/')
 def HomeView():
-    posts = ViewPost()
-    return render_template('home.html', user="Guest", posts = posts)
+    return render_template('home.html', user="Guest")
+
+@app.route('/<post_id>')
+def PostView(post_id):
+    post = ViewPost(post_id)
+    return render_template('home.html', user="Guest", post = post)
 
 
 @app.route('/create', methods=['GET', 'POST'])
